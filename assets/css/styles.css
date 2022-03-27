@@ -1,0 +1,89 @@
+/* CSS Variables */
+:root {
+  --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  --pink-color: #e58cdb;
+  --purple-color: #6643b5;
+  --white-color: #fff;
+}
+
+/* General Styling */
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-size: 18px;
+}
+
+/* Header Styling */
+header {
+  display: flex;
+  font-size: 20px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+header nav {
+  padding: 20px;
+  width: 100%;
+}
+
+header nav ul {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style: none;
+}
+
+header a {
+  color: var(--purple-color);
+}
+
+header a:hover {
+  color: var(--pink-color);
+}
+
+.top-left {
+  flex: 45%;
+}
+
+.top-right {
+  flex: 45%;
+  text-align: right;
+}
+
+/* Main Body Styling */
+main {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 20px 0;
+  text-align: center;
+  width: 50%;
+}
+
+.card-text {
+  padding: 20px;
+}
+
+.btn {
+  background-color: var(--purple-color);
+  border: 2px var(--purple-color) solid;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  color: var(--white-color);
+  display: inline-block;
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 10px 30px;
+}
