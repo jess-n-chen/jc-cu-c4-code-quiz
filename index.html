@@ -22,16 +22,28 @@
       </nav>
     </header>
     <main id="page-content">
-      <h1>Coding Quiz Challenge</h1>
-      <div class="card-text">
-        <p>
-          Try to answer the following code-related questions within the time
-          limit.<br />
-          Keep in mind that incorrect answers will penalize your score/time by
-          ten seconds!
-        </p>
-        <button class="btn" id="start-btn">Start Quiz</button>
-      </div>
+      <section id="question-section">
+        <h1 class="intro-heading">Coding Quiz Challenge</h1>
+        <div class="intro-text">
+          <p>
+            Try to answer the following code-related questions within the time
+            limit.<br />
+            Keep in mind that incorrect answers will penalize your score/time by
+            ten seconds!
+          </p>
+          <button class="btn" id="start-btn">Start Quiz</button>
+        </div>
+      </section>
+      <section id="end-form" class="end-section">
+        <h2>All done!</h2>
+        <p id="score-text">Your final score is 0.</p>
+        <form id="submit-score" class="submit-form">
+          <label for="initials">Enter initials:</label>
+          <input type="text" id="initials" />
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </section>
+      <section id="results" class="results-section"></section>
     </main>
     <script src="./assets/js/script.js"></script>
   </body>
