@@ -3,6 +3,7 @@
   --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   --pink-color: #e58cdb;
   --purple-color: #6643b5;
+  --light-purple-color: #c3bef0;
   --white-color: #fff;
 }
 
@@ -161,8 +162,29 @@ main {
   padding: 5px 10px;
 }
 
+/* High Score Page Styling */
+.high-score-section {
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.high-score-section div {
+  margin: 15px 0px;
+}
+
+.entry-item {
+  background: var(--light-purple-color);
+  border: 1px solid var(--purple-color);
+  line-height: 1.5;
+  padding: 10px;
+}
+
 /* Styling Adjustment for Smaller Screens */
 @media (max-width: 690px) {
+  main {
+    width: 80%;
+  }
+
   .btn,
   .submit-btn {
     width: 100%;
@@ -176,6 +198,10 @@ main {
 
   .submit-btn {
     margin: 20px 0px;
+  }
+
+  .high-score-section {
+    width: 100%;
   }
 
   h2 {

@@ -15,7 +15,7 @@ var initialsEl = document.getElementById("initials");
 
 // Question Count and Time Variables
 var count = 1;
-var timeLeft = 10;
+var timeLeft = 60;
 var timerInterval;
 
 // Question Bank
@@ -72,32 +72,37 @@ var questionBank = [
   },
 ];
 
+// Function to create object with User Info
 function storeScoreObj(userInitials, userScore) {
   var entry = {
     initials: userInitials,
     score: userScore,
   };
 
+  // Get Current Score List
   var currentScores = localStorage.getItem("scoreList");
 
+  // Validate/Parse Current List
   if (!currentScores) {
     currentScores = [];
   } else {
     currentScores = JSON.parse(currentScores);
   }
-  console.log(currentScores);
+  // Append New Entry to List
   currentScores.push(entry);
 
+  // Set Updated List in Local Storage
   localStorage.setItem("scoreList", JSON.stringify(currentScores));
 }
 
+// Save Score from this round
 function saveScore(event) {
   event.preventDefault();
   resultsEl.setAttribute("style", "display: none;");
 
   var userInitials = initialsEl.value;
 
-  // reset form field for next entry
+  // Reset Form Field For Next Entry
   initialsEl.value = "";
 
   if (!userInitials) {
@@ -109,12 +114,14 @@ function saveScore(event) {
   }
 }
 
+// Display Final Result from Round
 function displayResults() {
   quesEl.innerHTML = "";
   endFormEl.setAttribute("style", "display: block;");
   scoreEl.textContent = `Your final score is ${timeLeft}`;
 }
 
+// Check Answer and Display Results
 function checkAnswer(event) {
   var optionEl = event.target;
 
@@ -125,10 +132,13 @@ function checkAnswer(event) {
       resultsEl.innerHTML = "<p>Correct!</p>";
       results.setAttribute("style", "display: block;");
     } else {
+      timeLeft -= 10;
       resultsEl.innerHTML = "<p>Wrong!</p>";
       resultsEl.setAttribute("style", "display: block;");
     }
   }
+
+  // Move to Next Question in Question Bank
   if (count < questionBank.length - 1) {
     count++;
     displayQuestions(count);
@@ -138,6 +148,7 @@ function checkAnswer(event) {
   }
 }
 
+// Inject Questions into HTML
 function displayQuestions() {
   quesEl.innerHTML = `<div class="question-container">
   <h2>${questionBank[count].text}</h2>
