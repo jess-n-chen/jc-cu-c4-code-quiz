@@ -3,7 +3,7 @@
 ## Columbia University Bootcamp - Web APIs Challenge: Code Quiz
 
 > This repository contains the code for my code quiz application written in HTML, CSS and Vanilla JavaScript. This is timed quiz with multiple-choice questions.
-> Live Site: https://jess-n-chen.github.io/jc-cu-c4-code-quiz
+> Live Site: https://jess-n-chen.github.io/jc-cu-c4-code-quiz/
 
 ## Table of Contents
 
