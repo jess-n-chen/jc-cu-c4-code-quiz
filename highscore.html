@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="./assets/css/styles.css" class="stylesheet" />
   </head>
   <body>
-    <div class="wrapper">
-      <h1>High Scores</h1>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <h2></h2>
-      </div>
-    </div>
-    <script src="./assets/js/script.js"></script>
+    <main id="page-content">
+      <!-- high score section -->
+      <section id="high-score-section">
+        <h1>High Scores</h1>
+        <div class="leaderboard"></div>
+        <button class="btn"><a href="./index.html">Go Back</a></button>
+        <button class="btn" id="clear-button">Clear High Scores</button>
+      </section>
+    </main>
+    <script src="./assets/js/highscore.js"></script>
   </body>
 </html>

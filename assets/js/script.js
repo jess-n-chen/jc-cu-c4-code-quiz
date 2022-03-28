@@ -13,12 +13,14 @@ var scoreEl = document.getElementById("score-text");
 var scoreformEl = document.getElementById("submit-score");
 var initialsEl = document.getElementById("initials");
 
+// Question Count and Time Variables
 var count = 1;
-var timeLeft = 60;
+var timeLeft = 10;
+var timerInterval;
 
+// Question Bank
 var questionBank = [
   {
-    qid: "01",
     text: "Commonly used data types DO NOT include:",
     options: {
       option_1: "Strings",
@@ -29,7 +31,6 @@ var questionBank = [
     answer: "3",
   },
   {
-    qid: "02",
     text: "The condition in an if / else statement is enclosed with ____.",
     options: {
       option_1: "Quotes",
@@ -40,7 +41,6 @@ var questionBank = [
     answer: "3",
   },
   {
-    qid: "03",
     text: "Arrays in JavaScript can be used to store ____.",
     options: {
       option_1: "Numbers and Strings",
@@ -51,7 +51,6 @@ var questionBank = [
     answer: "4",
   },
   {
-    qid: "04",
     text: "String values must be enclosed within _____ when being assigned to variables.",
     options: {
       option_1: "Commas",
@@ -62,7 +61,6 @@ var questionBank = [
     answer: "3",
   },
   {
-    qid: "05",
     text: "A very useful tool used during development and debugging for printing content to the debugger is:",
     options: {
       option_1: "JavaScript",
@@ -80,7 +78,17 @@ function storeScoreObj(userInitials, userScore) {
     score: userScore,
   };
 
-  localStorage.setItem("scoreList", JSON.stringify(entry));
+  var currentScores = localStorage.getItem("scoreList");
+
+  if (!currentScores) {
+    currentScores = [];
+  } else {
+    currentScores = JSON.parse(currentScores);
+  }
+  console.log(currentScores);
+  currentScores.push(entry);
+
+  localStorage.setItem("scoreList", JSON.stringify(currentScores));
 }
 
 function saveScore(event) {
@@ -88,7 +96,9 @@ function saveScore(event) {
   resultsEl.setAttribute("style", "display: none;");
 
   var userInitials = initialsEl.value;
-  console.log(userInitials);
+
+  // reset form field for next entry
+  initialsEl.value = "";
 
   if (!userInitials) {
     alert("Please enter a valid response.");
@@ -103,23 +113,6 @@ function displayResults() {
   quesEl.innerHTML = "";
   endFormEl.setAttribute("style", "display: block;");
   scoreEl.textContent = `Your final score is ${timeLeft}`;
-}
-
-// Timer that counts down from 75 seconds
-function timer() {
-  // Function to Display Timer Countdown At Interval
-  var timerInterval = setInterval(function () {
-    // Display Time Left when Greater than 0
-    if (timeLeft > 0) {
-      timerEl.textContent = `Time: ${timeLeft}`;
-      timeLeft--;
-    } else {
-      timerEl.textContent = `Time: 0`;
-      // Stop Timer
-      clearInterval(timer);
-      displayResults();
-    }
-  }, 1000);
 }
 
 function checkAnswer(event) {
@@ -140,6 +133,7 @@ function checkAnswer(event) {
     count++;
     displayQuestions(count);
   } else {
+    clearInterval(timerInterval);
     displayResults();
   }
 }
@@ -158,6 +152,28 @@ function displayQuestions() {
   optionsEl.addEventListener("click", checkAnswer);
 }
 
+// Timer that counts down from 60 seconds
+function timer() {
+  // Display Initial Time when Function Starts
+  timerEl.textContent = `Time: ${timeLeft}`;
+  // Function to Display Timer Countdown At Interval
+  timerInterval = setInterval(function () {
+    // Display Time Left when Greater than 0
+    timeLeft--;
+    timerEl.textContent = `Time: ${timeLeft}`;
+    if (timeLeft <= 0) {
+      // Stop Timer
+      clearInterval(timerInterval);
+      displayResults();
+    }
+  }, 1000);
+}
+
+function startGame() {
+  timer();
+  displayQuestions();
+}
+
 /* Event Listeners */
-startEl.addEventListener("click", displayQuestions);
+startEl.addEventListener("click", startGame);
 scoreformEl.addEventListener("submit", saveScore);

@@ -15,11 +15,12 @@
 }
 
 a {
+  color: var(--white-color);
   text-decoration: none;
 }
 
 p {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 ul {
@@ -68,12 +69,14 @@ header a:hover {
 /* Main Body Styling */
 main {
   display: flex;
+  font-size: 20px;
   flex-direction: column;
   margin: auto;
   padding: 20px 0;
   width: 50%;
 }
 
+/* Intro Section Styling */
 .intro-heading,
 .intro-text {
   font-size: 32px;
@@ -88,7 +91,7 @@ main {
   box-shadow: var(--box-shadow);
   color: var(--white-color);
   display: inline-block;
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 20px;
   padding: 10px 30px;
 }
@@ -99,7 +102,7 @@ main {
   border: 2px var(--pink-color) solid;
 }
 
-/* Question Body Styling */
+/* Question Section Styling */
 .options {
   margin-top: 20px;
 }
@@ -109,7 +112,7 @@ main {
   border-radius: 5px;
   color: var(--white-color);
   display: inline-block;
-  font-size: 14px;
+  font-size: 20px;
   margin: 5px;
   padding: 10px 20px;
   text-align: left;
@@ -154,6 +157,7 @@ main {
   border-radius: 5px;
   color: var(--white-color);
   display: inline-block;
+  font-size: 16px;
   padding: 5px 10px;
 }
 
@@ -168,6 +172,10 @@ main {
     margin: 16px 0px 0px 0px;
     padding: 10px 15px;
     width: 100%;
+  }
+
+  .submit-btn {
+    margin: 20px 0px;
   }
 
   h2 {
